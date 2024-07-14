@@ -1,5 +1,11 @@
 <div class="container mt-5">
 
+<div class="row">
+  <div class="col-lg-6">
+    <?= Flasher::flash();?>
+  </div>
+</div>
+
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahData">
     Tambah Mahasiswa
   </button>
@@ -30,9 +36,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
         <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nama" name="nama">
+            <input type="text" class="form-control" id="nama" name="name">
             <label for="nama">Masukkan Nama</label>
           </div>
           <div class="form-floating mb-3">
@@ -61,6 +68,7 @@
         <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
       </div>
       </form>
+
     </div>
   </div>
 </div>

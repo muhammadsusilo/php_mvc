@@ -26,10 +26,11 @@ class Mahasiswa_model
 
   public function tambahData($data)
   {
-    $query = "insert into data_mhs values('', :nama,:nim, :email, :jurusan)";
+    $query = "insert into data_mhs(name,nim,email,jurusan)
+              values( :name, :nim, :email, :jurusan)";
 
     $this->db->query($query);
-    $this->db->bind("nama", $data['nama']);
+    $this->db->bind("name", $data['name']);
     $this->db->bind("nim", $data['nim']);
     $this->db->bind("email", $data['email']);
     $this->db->bind("jurusan", $data['jurusan']);
