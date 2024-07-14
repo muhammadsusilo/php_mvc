@@ -17,8 +17,13 @@
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <?= $mhs['name']; ?>
-            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>"
-              class="badge text-bg-primary rounded-pill">Detail</a>
+            <div>
+              <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>"
+                class="badge text-bg-primary rounded-pill ">Detail</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>"
+                class="badge text-bg-danger rounded-pill"
+                onclick="return confirm('Anda yakin menghapusnya?')">hapus</a>
+            </div>
           </li>
         </ul>
       <?php endforeach; ?>
@@ -72,3 +77,34 @@
     </div>
   </div>
 </div>
+
+<!-- modal untuk menghapus -->
+<!--  
+<div class="modal fade" id="hapusData" tabindex="-1" aria-labelledby="hapusDataMahasiswa" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data Mahasiswa</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form action="<?= BASEURL;?>/mahasiswa/hapus<?$mhs['id']?>" method="post">
+         <input type="hidden" name="id" value="<?= $mhs['id']; ?>">
+      <div class="modal-body">
+                <div> <?= $mhs['name'], $mhs['nim']?>Yakin menghapus data ini?</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="hapus">Hapus</button>
+      </div>
+      </form>
+
+    <form action="<?= BASEURL; ?>/mahasiswa/hapus/<?= $data['mhs']['id'] ?>" method="post">
+      <input type="hidden" name="id" value="<?= $data['mhs']['id']; ?>">
+      <button type="submit" name="hapus">Hapus</button>
+    </form>
+
+
+    </div>
+  </div>
+</div> -->

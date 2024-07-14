@@ -36,9 +36,16 @@ class Mahasiswa_model
     $this->db->bind("jurusan", $data['jurusan']);
 
     $this->db->execute();
-    
     return $this->db->rowCount();
   }
 
+  public function hapusData($id) {
+  
+    $query = "delete from data_mhs where id = :id";
+    $this->db->query($query);
+    $this->db->bind("id", $id);
 
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
 }
