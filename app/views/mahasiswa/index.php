@@ -6,7 +6,7 @@
   </div>
 </div>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahData">
+  <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#tambahData">
     Tambah Mahasiswa
   </button>
 
@@ -20,6 +20,12 @@
             <div>
               <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>"
                 class="badge text-bg-primary rounded-pill ">Detail</a>
+
+              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>"
+                class="badge text-bg-success rounded-pill tampilModalUbah" 
+                data-bs-toggle="modal" data-bs-target="#tambahData"
+                data-id="<?= $mhs['id']; ?>">edit</a>
+
               <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>"
                 class="badge text-bg-danger rounded-pill"
                 onclick="return confirm('Anda yakin menghapusnya?')">hapus</a>
@@ -43,6 +49,8 @@
       <div class="modal-body">
 
         <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+          <input type="hidden" id="id" name="id">
+
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nama" name="name">
             <label for="nama">Masukkan Nama</label>
@@ -70,41 +78,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
       </div>
       </form>
 
     </div>
   </div>
 </div>
-
-<!-- modal untuk menghapus -->
-<!--  
-<div class="modal fade" id="hapusData" tabindex="-1" aria-labelledby="hapusDataMahasiswa" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data Mahasiswa</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <form action="<?= BASEURL;?>/mahasiswa/hapus<?$mhs['id']?>" method="post">
-         <input type="hidden" name="id" value="<?= $mhs['id']; ?>">
-      <div class="modal-body">
-                <div> <?= $mhs['name'], $mhs['nim']?>Yakin menghapus data ini?</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" name="hapus">Hapus</button>
-      </div>
-      </form>
-
-    <form action="<?= BASEURL; ?>/mahasiswa/hapus/<?= $data['mhs']['id'] ?>" method="post">
-      <input type="hidden" name="id" value="<?= $data['mhs']['id']; ?>">
-      <button type="submit" name="hapus">Hapus</button>
-    </form>
-
-
-    </div>
-  </div>
-</div> -->
