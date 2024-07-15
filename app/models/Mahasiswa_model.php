@@ -68,5 +68,13 @@ class Mahasiswa_model
     $this->db->execute();
     return $this->db->rowCount();
   }
-  
+
+  public function searchData($keyword)
+  {
+    $query = " SELECT * FROM data_mhs WHERE name LIKE :keyword ";
+    $this->db->query($query);
+    $this->db->bind('keyword', "%$keyword%");
+    return $this->db->resultSet();
+  }
+
 }

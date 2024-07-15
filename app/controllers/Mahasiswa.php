@@ -69,4 +69,24 @@ class Mahasiswa extends Controller {
     }
   }
 
+  public function search()
+  {
+    $data['judul'] = "Hasil Pencarian";
+    // menengecek keywoard yang dikirim tidak kosong
+    if (isset($_POST['keyword'])) {
+      // jika ada data
+      $keyword = $_POST['keyword'];
+      $data['mhs'] = $this->model('Mahasiswa_model')->searchData($keyword);
+    } else {
+      // jika tidak ada data
+      $data['mhs'] = []; // jika data kosong di inisiasikan sebagai array kosong
+    }
+
+    $this->view('templates/header', $data);
+    $this->view('mahasiswa/index', $data);
+    $this->view('templates/footer');
+  }
+
+
+
 }

@@ -10,35 +10,52 @@
     Tambah Mahasiswa
   </button>
 
+<div class="row my-3">
+  <div class="col-lg-6">
+
+    <form action="<?= BASEURL; ?>/mahasiswa/search" method="post">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" name="keyword" id="keyword" autocomplete="off" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit" id="tombolSearch">Search</button>
+      </div>
+    </div>
+    </form>
+
+  </div>
+</div>
+
   <div class="row">
     <div class="col-6">
-      <h3>Daftar Mahasiswa</h3>
-      <?php foreach ($data['mhs'] as $mhs): ?>
-        <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <?= $mhs['name']; ?>
-            <div>
-              
-              <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>"
-                class="badge text-bg-primary rounded-pill ">Detail</a>
+        <h3>Daftar Mahasiswa</h3>
+        <!-- untuk mengecek apakah data dalam array jika tidak maka tampilkan array kosong -->
+       <?php if (isset($data['mhs']) && is_array($data['mhs']) && !empty($data['mhs'])): ?>
+        <!-- selanjutnya tampilkan data jika kosong -->
+        <?php foreach ($data['mhs'] as $mhs): ?>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <?= $mhs['name']; ?>
+              <div>
+                <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>"
+                  class="badge text-bg-primary rounded-pill">Detail</a>
+  
+                <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>"
+                  class="badge text-bg-success rounded-pill tampilModalUbah" data-bs-toggle="modal"
+                  data-bs-target="#tambahData" data-id="<?= $mhs['id']; ?>">Ubah</a>
+  
+                <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge text-bg-danger rounded-pill"
+                  onclick="return confirm('Anda yakin menghapusnya?')">Hapus</a>
+              </div>
+            </li>
+          </ul>
+        <?php endforeach; ?>
 
-              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>"
-                class="badge text-bg-success rounded-pill tampilModalUbah" 
-                data-bs-toggle="modal" data-bs-target="#tambahData"
-                data-id="<?= $mhs['id']; ?>">ubah</a>
-
-              <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>"
-                class="badge text-bg-danger rounded-pill"
-                onclick="return confirm('Anda yakin menghapusnya?')">hapus</a>
-
-            </div>
-          </li>
-        </ul>
-      <?php endforeach; ?>
+        <!-- jika data tidak di temukan -->
+      <?php else: ?>
+        <p>Tidak ada data ditemukan.</p>
+      <?php endif; ?>
     </div>
   </div>
-
-</div>
 
 <!-- modal untuk tambah data mahasiswa -->
 <div class="modal fade" id="tambahData" tabindex="-1" aria-labelledby="tambahDataMahasiswa" aria-hidden="true">
