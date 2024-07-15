@@ -18,17 +18,19 @@
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <?= $mhs['name']; ?>
             <div>
+              
               <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>"
                 class="badge text-bg-primary rounded-pill ">Detail</a>
 
               <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>"
                 class="badge text-bg-success rounded-pill tampilModalUbah" 
                 data-bs-toggle="modal" data-bs-target="#tambahData"
-                data-id="<?= $mhs['id']; ?>">edit</a>
+                data-id="<?= $mhs['id']; ?>">ubah</a>
 
               <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>"
                 class="badge text-bg-danger rounded-pill"
                 onclick="return confirm('Anda yakin menghapusnya?')">hapus</a>
+
             </div>
           </li>
         </ul>

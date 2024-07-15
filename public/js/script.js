@@ -11,6 +11,7 @@ $(function() {
       'action',
       'http://localhost/php_mvc_wpu/public/mahasiswa/tambah',
     );
+    
   });
 
   // ambil class tamilmodalubah(edit)
@@ -21,7 +22,7 @@ $(function() {
     $('.modal-footer button[type=submit]').html('Ubah Data');
 
     // ubah action
-    $('modal-body form').attr(
+    $('.modal-body form').attr(
       'action',
       'http://localhost/php_mvc_wpu/public/mahasiswa/ubah'
     );
@@ -32,10 +33,11 @@ $(function() {
     $.ajax({
       url: 'http://localhost/php_mvc_wpu/public/mahasiswa/setubah',
       // ambil data
-      data: { id: id },
+      data: { id: id }, // nama data yang dikirimkan : isi data yang dikirimkan
       method: 'post',
       dataType: "json",
       success: function (data) {
+        console.log(data); 
         // ambil data
         $('#nama').val(data.name);
         $('#nim').val(data.nim);

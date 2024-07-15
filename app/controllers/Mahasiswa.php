@@ -50,15 +50,14 @@ class Mahasiswa extends Controller {
   }
 
   public function setubah(){
-    // $this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']);
-
+    header('Content-Type: application/json');
     echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
   }
 
   public function ubah(){
-
+    // untuk ubah data
       if( $this->model('Mahasiswa_model')->ubahData($_POST) > 0){
-      // setting flasher jika berharil
+      // setting flasher jika berhasil
       Flasher::setFlash("berhasil","diubah", "success");
       header('Location: ' . BASEURL . '/mahasiswa');
       exit;

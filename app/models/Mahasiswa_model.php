@@ -2,7 +2,7 @@
 
 class Mahasiswa_model
 {
-  private $table = "data_mhs";
+  // private $table = "data_mhs";
   private $db;
 
   public function __construct()
@@ -49,18 +49,17 @@ class Mahasiswa_model
     return $this->db->rowCount();
   }
 
-
   public function ubahData($data)
   {
-    $query = "update data_mhs set 
-    name = :name,
-    nim =:nim,
+    $query = "UPDATE data_mhs set 
+    name = :nama,
+    nim = :nim,
     email = :email,
     jurusan = :jurusan
     where id = :id";
 
     $this->db->query($query);
-    $this->db->bind("name", $data['name']);
+    $this->db->bind("nama", $data['name']);
     $this->db->bind("nim", $data['nim']);
     $this->db->bind("email", $data['email']);
     $this->db->bind("jurusan", $data['jurusan']);
@@ -69,4 +68,5 @@ class Mahasiswa_model
     $this->db->execute();
     return $this->db->rowCount();
   }
+  
 }
